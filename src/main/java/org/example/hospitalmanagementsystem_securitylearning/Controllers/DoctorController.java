@@ -18,6 +18,7 @@ public class DoctorController {
 
     @GetMapping("/appointments")
     public ResponseEntity<List<AppointmentResponseDto>> getAllAppointmentsOfDoctor() {
+        System.out.println("inside doctor controller");
         return ResponseEntity.ok(appointmentService.getAllAppointmentsOfDoctor(1L));
     }
 

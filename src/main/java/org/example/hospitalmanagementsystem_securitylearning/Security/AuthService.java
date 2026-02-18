@@ -32,15 +32,15 @@ public class AuthService {
         return new LoginResponseDto(token, user.getId());
     }
 
-    public SignUpResponseDto signup(LoginRequestDto signRequestDto) throws Exception{
-        User user=userRepository.findByUsername(signRequestDto.getUsername()).orElse(null);
+    public SignUpResponseDto signup(LoginRequestDto signUpRequestDto) throws Exception{
+        User user=userRepository.findByUsername(signUpRequestDto.getUsername()).orElse(null);
         if(user!=null){
             throw new IllegalAccessException("user already exist");
         }
 
         user = userRepository.save(User.builder()
-                        .username(signRequestDto.getUsername())
-                        .password(passwordEncoder.encode(signRequestDto.getPassword()))
+                        .username(signUpRequestDto.getUsername())
+                        .password(passwordEncoder.encode(signUpRequestDto.getPassword()))
                         .build());
         return new SignUpResponseDto(user.getId(), user.getUsername());
     }
