@@ -18,10 +18,9 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "app_user")
-//        , indexes = {
-//        @Index(name = "idx_provider_id_provider_type", columnList = "providerId, providerType")
-//})
+@Table(name = "app_user", indexes = {
+        @Index(name = "idx_provider_id_provider_type", columnList = "providerId, providerType")
+})
 public class User implements UserDetails{
 
     @Id
@@ -33,11 +32,11 @@ public class User implements UserDetails{
 
     private String password;
 
-//    private String providerId;
-//
-//    @Enumerated(EnumType.STRING)
-//    private AuthProviderType providerType;
-//
+    private String providerId;
+
+    @Enumerated(EnumType.STRING)
+    private AuthProviderType providerType;
+
 //    @ElementCollection(fetch = FetchType.EAGER)
 //    @Enumerated(EnumType.STRING)
 //    Set<RoleType> roles = new HashSet<>();

@@ -9,5 +9,5 @@ public class HospitalManagementSystemSecurityLearningApplication {
     public static void main(String[] args) {
         SpringApplication.run(HospitalManagementSystemSecurityLearningApplication.class, args);
     }
-
+    
 }
