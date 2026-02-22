@@ -31,17 +31,17 @@ public class AppConfig {
     }
 
 //    @Bean
-    UserDetailsService userDetailsService() {
-        UserDetails user1 = User.withUsername("admin")
-                .password(passwordEncoder().encode("pass"))
-                .roles("ADMIN")
-                .build();
-
-        UserDetails user2 = User.withUsername("patient")
-                .password(passwordEncoder().encode("pass"))
-                .roles("PATIENT")
-                .build();
-
-        return new InMemoryUserDetailsManager(user1, user2);
-    }
+//    UserDetailsService userDetailsService() {
+//        UserDetails user1 = User.withUsername("admin")
+//                .password(passwordEncoder().encode("pass"))
+//                .roles("ADMIN")
+//                .build();
+//
+//        UserDetails user2 = User.withUsername("patient")
+//                .password(passwordEncoder().encode("pass"))
+//                .roles("PATIENT")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(user1, user2);
+//    }
 }

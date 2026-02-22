@@ -32,4 +32,9 @@ public class AdminController {
     public ResponseEntity<DoctorResponseDto> onBoardNewDoctor(@RequestBody OnboardDoctorRequestDto onboardDoctorRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(doctorService.onBoardNewDoctor(onboardDoctorRequestDto));
     }
+
+    @GetMapping("/doctors")
+    public ResponseEntity<List<DoctorResponseDto>> getAllDoctors(){
+        return ResponseEntity.ok(doctorService.getAllDoctors());
+    }
 }

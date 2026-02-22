@@ -25,7 +25,8 @@ import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
-public class AuthService {
+public class
+AuthService {
 
     private final AuthenticationManager authenticationManager;
     private final AuthUtil authUtil;

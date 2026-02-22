@@ -17,7 +17,6 @@ import java.util.List;
 @Table(
         name = "patient",
         uniqueConstraints = {
-//                @UniqueConstraint(name = "unique_patient_email", columnNames = {"email"}),
                 @UniqueConstraint(name = "unique_patient_name_birthdate", columnNames = {"name", "birthDate"})
         },
         indexes = {
@@ -36,7 +35,6 @@ public class Patient {
     @Column(nullable = false, length = 40)
     private String name;
 
-    //    @ToString.Exclude
     private LocalDate birthDate;
 
     @Column(unique = true, nullable = false)
@@ -56,7 +54,7 @@ public class Patient {
     private BloodGroupType bloodGroup;
 
     @OneToOne(cascade = {CascadeType.ALL}, orphanRemoval = true)
-    @JoinColumn(name = "patient_insurance_id") // owning side
+    @JoinColumn(name = "patient_insurance_id", unique = true) // owning side
     private Insurance insurance;
 
     @OneToMany(mappedBy = "patient", cascade = {CascadeType.REMOVE}, orphanRemoval = true, fetch = FetchType.EAGER)

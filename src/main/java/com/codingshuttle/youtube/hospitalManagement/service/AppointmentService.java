@@ -1,7 +1,7 @@
 package com.codingshuttle.youtube.hospitalManagement.service;
 
+import com.codingshuttle.youtube.hospitalManagement.dto.AppointmentRequestDto;
 import com.codingshuttle.youtube.hospitalManagement.dto.AppointmentResponseDto;
-import com.codingshuttle.youtube.hospitalManagement.dto.CreateAppointmentRequestDto;
 import com.codingshuttle.youtube.hospitalManagement.entity.Appointment;
 import com.codingshuttle.youtube.hospitalManagement.entity.Doctor;
 import com.codingshuttle.youtube.hospitalManagement.entity.Patient;
@@ -30,17 +30,17 @@ public class AppointmentService {
 
     @Transactional
     @Secured("ROLE_PATIENT")
-    public AppointmentResponseDto createNewAppointment(CreateAppointmentRequestDto createAppointmentRequestDto) {
-        Long doctorId = createAppointmentRequestDto.getDoctorId();
-        Long patientId = createAppointmentRequestDto.getPatientId();
+    public AppointmentResponseDto createNewAppointment(AppointmentRequestDto AppointmentRequestDto) {
+        Long doctorId = AppointmentRequestDto.getDoctorId();
+        Long patientId = AppointmentRequestDto.getPatientId();
 
         Patient patient = patientRepository.findById(patientId)
                 .orElseThrow(() -> new EntityNotFoundException("Patient not found with ID: " + patientId));
         Doctor doctor = doctorRepository.findById(doctorId)
                 .orElseThrow(() -> new EntityNotFoundException("Doctor not found with ID: " + doctorId));
         Appointment appointment = Appointment.builder()
-                .reason(createAppointmentRequestDto.getReason())
-                .appointmentTime(createAppointmentRequestDto.getAppointmentTime())
+                .reason(AppointmentRequestDto.getReason())
+                .appointmentTime(AppointmentRequestDto.getAppointmentTime())
                 .build();
 
         appointment.setPatient(patient);
